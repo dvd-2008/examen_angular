@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card border border-primary shadow border-3">
+        <div class="card-body">
+          <ng-container *ngIf="currentPlato">
+            <h5 class="card-title text-primary lead fs-1 text-center">{{ currentPlato.nombre }}</h5>
+            <p class="card-text lead fs-4 text-success">{{ currentPlato.descripcion }}</p>
+
+           <div class="card body">
+            <img src={{currentPlato.imagen}} class="card-img-top img-fluid" alt="Imagen del plato">
+          </div>
+          <div class="card-footer bg-warning text-white mb-2 mt-4">
+            Precio: ${{ currentPlato.precio }}
+          </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col text-center">
+      <button class="btn btn-primary mr-2 me-2" (click)="previousPlato()" [disabled]="currentIndex === 0">Anterior</button>
+      <button class="btn btn-warning" (click)="nextPlato()" [disabled]="currentIndex === platos.length - 1">Siguiente</button>
+    </div>
+  </div>
+</div>

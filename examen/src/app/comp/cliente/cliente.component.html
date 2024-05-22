@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Registro de Clientes</h2>
+      <form #customerForm="ngForm" (ngSubmit)="registerCustomer(customerForm)">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" class="form-control  border border-primary" ngModel minlength="3" maxlength="14" required>
+          <div *ngIf="customerForm.controls['nombre'].errors && (customerForm.controls['nombre'].dirty || customerForm.controls['nombre'].touched)" class="alert alert-danger">
+            <div [hidden]="!customerForm.controls['nombre'].errors['required']">
+              El nombre es obligatorio.
+            </div>
+            <div [hidden]="!customerForm.controls['nombre'].errors['minlength']">
+              El nombre debe tener al menos 3 caracteres.
+            </div>
+            <div [hidden]="!customerForm.controls['nombre'].errors['maxlength']">
+              El nombre no puede tener más de 14 caracteres.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="apellidoPaterno">Apellido Paterno</label>
+          <input type="text" id="apellidoPaterno" name="apellidoPaterno" class="form-control border border-primary" ngModel minlength="3" maxlength="15" required>
+
+          <div *ngIf="customerForm.controls['apellidoPaterno'].errors && (customerForm.controls['apellidoPaterno'].dirty || customerForm.controls['apellidoPaterno'].touched)" class="alert alert-success">
+            <div [hidden]="!customerForm.controls['apellidoPaterno'].errors['required']">
+              El Apellido  es obligatorio.
+            </div>
+            <div [hidden]="!customerForm.controls['apellidoPaterno'].errors['minlength']">
+              El Apellido Paterno debe tener Maximo 15 caracteres.
+            </div>
+            <div [hidden]="!customerForm.controls['apellidoPaterno'].errors['maxlength']">
+              El Apellido Paterno no puede tener más de 15 caracteres.
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+        <div class="form-group">
+          <label for="apellidoPaterno">Apellido Materno</label>
+          <input type="text" id="apellidoMaterno" name="apellidoMaterno" class="form-control  border border-primary" ngModel minlength="3" maxlength="15" required>
+
+          <div *ngIf="customerForm.controls['apellidoMaterno'].errors && (customerForm.controls['apellidoMaterno'].dirty || customerForm.controls['apellidoMaterno'].touched)" class="alert alert-success">
+            <div [hidden]="!customerForm.controls['apellidoMaterno'].errors['required']">
+              El Apellido  es obligatorio.
+            </div>
+            <div [hidden]="!customerForm.controls['apellidoMaterno'].errors['minlength']">
+              El Apellido Materno debe tener Maximo 15 caracteres
+            </div>
+            <div [hidden]="!customerForm.controls['apellidoMaterno'].errors['maxlength']">
+              El Apellido Materno no puede tener más de 15 caracteres.
+            </div>
+          </div>
+
+          </div>
+
+
+
+        <div class="form-group">
+          <label for="dni">DNI</label>
+          <input type="text" id="dni" name="dni" class="form-control  border border-primary" ngModel minlength="9" required>
+          <div *ngIf="customerForm.controls['dni'].errors && (customerForm.controls['dni'].dirty || customerForm.controls['dni'].touched)" class="alert alert-danger">
+            <div [hidden]="!customerForm.controls['dni'].errors['required']">
+              El DNI es obligatorio.
+            </div>
+            <div [hidden]="!customerForm.controls['dni'].errors['minlength']">
+              El DNI debe tener al menos 9 caracteres.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" name="contrasena" class="form-control  border border-primary" ngModel pattern="[0-9]+" required>
+          <div *ngIf="customerForm.controls['contrasena'].errors && (customerForm.controls['contrasena'].dirty || customerForm.controls['contrasena'].touched)" class="alert alert-danger">
+            <div [hidden]="!customerForm.controls['contrasena'].errors['required']">
+              La contraseña es obligatoria.
+            </div>
+            <div [hidden]="!customerForm.controls['contrasena'].errors['pattern']">
+              La contraseña debe contener solo valores numéricos.
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2" [disabled]="!customerForm.valid">Registrar Cliente</button>
+      </form>
+    </div>
+    <div class="col-md-6    ">
+      <h2>Clientes Registrados</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>DNI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of registeredCustomers">
+            <td>{{ customer.nombre }}</td>
+            <td>{{ customer.apellidoPaterno }}</td>
+            <td>{{ customer.apellidoMaterno }}</td>
+            <td>{{ customer.dni }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

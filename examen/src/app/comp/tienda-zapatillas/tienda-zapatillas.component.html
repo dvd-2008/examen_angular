@@ -1,0 +1,53 @@
+<main>
+  <section class="row">
+    <aside class="col col-4 border border-2 border-primary shadow ms-2">
+      <p class="lead fs-4 text-primary">Tienda de Zapatilla total : {{zapatillas.length}}</p>
+      <article class="bg-light border border-start-3  border-top-0 border-bottom-0  border-end-0 border-3 border-success rounded p-2 shadow">
+        <label class="label fs-4 lead text-primary">Ingrese Marca o Precio  </label>
+      <input type="text" [(ngModel)]="consulta" class="form-control text-primary"/>
+      <input type="number" [(ngModel)]=" maxPrecio" class="form-control text-primary"/>
+      </article>
+
+    </aside>
+    <section class="col col-7 border border-2 border-primary shadow ms-2">
+      <p class="lead fs-4 text-primary">Resultado</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of zapatillas | buscadorZapatillas:consulta" >
+
+            <td>{{ product.id }}</td>
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.marca }}</td>
+            <td>{{ product.modelo }}</td>
+            <td>{{ product.precio }}</td>
+            <td><img src={{product.imagen}} alt="Producto" class="img-fluid"/></td>
+            <td>{{ product.stock }}</td>
+          </tr>
+          <tr *ngFor="let product of zapatillas | buscadorZapatillas:maxPrecio" >
+
+            <td>{{ product.id }}</td>
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.marca }}</td>
+            <td>{{ product.modelo }}</td>
+            <td>{{ product.precio }}</td>
+            <td><img src={{product.imagen}} alt="Producto" class="img-fluid"/></td>
+            <td>{{ product.stock }}</td>
+          </tr>
+        </tbody>
+        </table>
+
+    </section>
+
+  </section>
+</main>

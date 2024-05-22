@@ -1,0 +1,67 @@
+<main>
+  <p class="lead fs-2 text-primary">Consumiendo el servicio de Peliculas total : {{cines.length}}</p>
+<section class="row">
+<aside class="col col-6 border border-2 border-primary me-2 ms-2">
+  <p class="lead fs-4 text-primary">Listado de Peliculas</p>
+
+
+  <main  class="row">
+    <section class="col col-4" *ngFor="let cin of cines">
+      <div class="card ms-2 shadow">
+        <div class="card-header bg-primary text-white">
+          Pelicula :{{cin.nombre}}
+
+
+          </div>
+          <div class="card-body">
+            Fecha : {{cin.estreno}}
+            Genero:{{cin.genero}}
+            Duraciion: {{cin.duracion}}
+            Calificacion : {{cin.calificacion}}
+          </div>
+          <div class="card-footer bg-warning text-white">
+            <button class="btn btn-danger btn-sm" (click)="eliminar(cin)">Eliminar</button>
+            <button class="btn btn-primary btn-sm ms-2" (click)="editar(cin)"> editar</button>
+          </div>
+
+      </div>
+
+
+
+
+
+    </section>
+
+  </main>
+
+
+
+
+
+
+
+</aside>
+<aside class="col col-5 border border-2 border-primary me-2 ms-2">
+<p class="lead fs-4 text-primary">Formulario de Cine</p>
+
+<form [formGroup]="formCine">
+  <label class="lead fs-4 text-primary">Nombre</label>
+  <input type="text" class="form-control" formControlName="nombre"/>
+  <label class="lead fs-4 text-primary">Estreno</label>
+  <input type="text" class="form-control" formControlName="estreno"/>
+  <label class="lead fs-4 text-primary">Genero</label>
+  <input type="text" class="form-control" formControlName="genero"/>
+  <label class="lead fs-4 text-primary">Duracion</label>
+  <input type="text" class="form-control" formControlName="duracion"/>
+  <label class="lead fs-4 text-primary">Calificacion</label>
+  <input type="text" class="form-control" formControlName="calificacion"/>
+  <button  *ngIf="muestraBtnR" class="btn tbn-sm btn-primary " (click)="registrar()">Registrar</button>
+  <button *ngIf="muestraBtnA" class="btn tbn-sm btn-primary " (click)="actualizar()">Actualizar</button>
+  <button *ngIf="muestraBtnA" class="btn btn-danger btn-sm" (click)="cancelar()">Cancelar</button>
+</form>
+
+
+
+</aside>
+</section>
+</main>

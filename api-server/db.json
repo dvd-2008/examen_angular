@@ -1,0 +1,20 @@
+{
+    "cines": [
+        {
+          "id": 1,
+          "nombre": "Titanic",
+          "estreno": "1996",
+          "genero": "Drama",
+          "duracion": "2:00",
+          "calificacion": "9"
+        },
+        {
+          "id": 2,
+          "nombre": "Shreck",
+          "estreno": "2002",
+          "genero": "Comedia",
+          "duracion": "125 min",
+          "calificacion": "10"
+        }
+      ]
+}
